@@ -1,5 +1,5 @@
 {
-  "name": "siarkowodor/h2s-api",
+  "name": "h2sf/api",
   "description": "Api library for H2S framework - collection of shared interfaces",
   "minimum-stability": "stable",
   "license": "proprietary",
