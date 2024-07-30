@@ -1,0 +1,4 @@
+id: Siarko.Api.default
+
+types:
+  \Siarko\Api\State\AppStateInterface: \Siarko\Api\State\AppState
