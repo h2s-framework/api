@@ -1,6 +1,7 @@
 <?php
 
 namespace Siarko\Api\Factory;
+
 abstract class AbstractFactory implements FactoryInterface
 {
     /**
@@ -21,6 +22,22 @@ abstract class AbstractFactory implements FactoryInterface
      */
     protected function _create(string $className, array $data = []): object{
         return $this->objectCreator->createObject($className, $data);
+    }
+
+    /**
+     * Generic creation of new object
+     * this method is used by every dynamically created factory
+     * Filters arguments and removes FactoryArgument::NONE values
+     *
+     * @param string $className
+     * @param array $data
+     * @return object
+     */
+    protected function _createNamed(string $className, array $data = []): object{
+        return $this->objectCreator->createObject(
+            $className,
+            array_filter($data, fn($v) => $v !== FactoryArgument::NONE)
+        );
     }
 
 }

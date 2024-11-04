@@ -6,7 +6,7 @@ interface ScopeProviderInterface
 {
 
     /**
-     * @return string
+     * @return ?string
      */
-    public function getScope(): string;
+    public function getScope(): ?string;
 }
