@@ -88,9 +88,10 @@ class AppState extends DynamicDataObject implements AppStateInterface
     private function prepareConfig(array $config): array
     {
         $appConfig = $config[AppStateInterface::CONFIG_SECTION] ?? [];
-        $appConfig[AppStateInterface::FIELD_APP_MODE] = AppMode::fromString($appConfig[AppStateInterface::FIELD_APP_MODE]);
-        if(!array_key_exists(AppState::FIELD_APP_SCOPE, $appConfig)){
-            $appConfig[AppState::FIELD_APP_SCOPE] = $this->scopeProviderRegistry->getScope();
+        $appModeConfig = $config[AppStateInterface::FIELD_APP_MODE] ?? AppMode::DEV->name;
+        $appConfig[AppStateInterface::FIELD_APP_MODE] = AppMode::fromString($appModeConfig);
+        if(!array_key_exists(static::FIELD_APP_SCOPE, $appConfig)){
+            $appConfig[static::FIELD_APP_SCOPE] = $this->scopeProviderRegistry->getScope();
         }
         return $appConfig;
     }
